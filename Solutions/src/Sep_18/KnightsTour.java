@@ -23,7 +23,7 @@ public class KnightsTour {
 
     /**
      * Time Complexity - O(k^n) where k is a constant and n is the number of squares on the chess board
-     * Space Complexity - O(n^n)
+     * Space Complexity - O(n^2)
      */
     public boolean find() {
         int[][] sol = new int[n][n];
