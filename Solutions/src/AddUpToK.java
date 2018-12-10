@@ -1,5 +1,3 @@
-package Jul_18;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,18 +11,10 @@ public class AddUpToK {
 
     */
 
-    public static void main(String[] args) {
-        int[] array = {10, 21, 33, 42, 56, 68, 79, 86, 94};
-        AddUpToK addUpToK = new AddUpToK();
-        boolean result = addUpToK.isAddUpToKHashSet(array, 104);
-        System.out.println(result);
-        result = addUpToK.isAddUpToKSorting(array, 104);
-        System.out.println(result);
-    }
-
     /**
-     * Since we have a the target value, we can find out of two numbers add up to target
-     * by looking at a value and then figuring out if target - value exists in the given array.
+     * APPROACH 1
+     * Since we have a the target value, we can find out if two numbers add up to target
+     * by looking at a value and then figuring out if (target - value) exists in the given array.
      * To enable constant time lookup, we can use a Hash Set. For each value in the array,
      * check if target - value exists in the Hash Set. If it does, return true.
      * Else, put the current value in the Hash Set and continue looking.
@@ -43,6 +33,7 @@ public class AddUpToK {
     }
 
     /**
+     * APPROACH 2
      * Since we have the target value, we know that addition of two values would give us the target value.
      * We use sorting here. Sorting the values in the array would allow us to check different pairs
      * of values in a systematic way. If the sum of the first and the last value in the sorted array
@@ -66,6 +57,15 @@ public class AddUpToK {
             else if (a[low] + a[high] > target) high -= 1;
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {10, 21, 33, 42, 56, 68, 79, 86, 94};
+        AddUpToK addUpToK = new AddUpToK();
+        boolean result = addUpToK.isAddUpToKHashSet(array, 104);
+        System.out.println(result);
+        result = addUpToK.isAddUpToKSorting(array, 104);
+        System.out.println(result);
     }
 
 }
