@@ -1,23 +1,32 @@
-package Jul_18;
-
-public class ProductOfArrayExceptSelf {
+public class _2_ProductOfArrayExceptSelf {
 
     /*
 
-    Given an array nums of n integers where n > 1, return an array output such that
-    output[i] is equal to the product of all the elements of nums except nums[i].
+    Given an array of integers, return a new array such that each element at index i of the
+    new array is the product of all the numbers in the original array except the one at i.
 
-    Example:
-    Input:  [1,2,3,4]
-    Output: [24,12,8,6]
+    For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24].
+    If our input was [3, 2, 1], the expected output would be [2, 3, 6].
 
-    Note: Please solve it without division and in O(n).
-
-    Follow up:
-    Could you solve it with constant space complexity? (The output array does
-    not count as extra space for the purpose of space complexity analysis.)
+    Follow-up: what if you can't use division?
 
     */
+
+    /**
+     * APPROACH 1
+     * This is a simple approach where we find out the product of the entire array
+     * and then for value at each position, just divide the product by the original value
+     * <p>
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
+     */
+    public int[] productExceptSelfWithDivision(int[] nums) {
+        int[] res = new int[nums.length];
+        int product = 1;
+        for (int n : nums) product *= n;
+        for (int i = 0; i < res.length; i++) res[i] = product / nums[i];
+        return res;
+    }
 
     /**
      * The idea is to use two passes over the input array and store the result in the result array.
@@ -44,7 +53,7 @@ public class ProductOfArrayExceptSelf {
 
     public static void main(String[] args) {
         int[] a = {1, 2, 3, 4};
-        ProductOfArrayExceptSelf product = new ProductOfArrayExceptSelf();
+        _2_ProductOfArrayExceptSelf product = new _2_ProductOfArrayExceptSelf();
         int[] res = product.productExceptSelf(a);
         for (int n : res) {
             System.out.print(n + " ");
